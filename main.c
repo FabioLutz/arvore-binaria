@@ -17,6 +17,25 @@ Node *create(int value)
     return newNode;
 }
 
+Node *insert(Node *node, int value)
+{
+    if (node == NULL)
+    {
+        return create(value);
+    }
+
+    if (value < node->data)
+    {
+        node->left = insert(node->left, value);
+    }
+    else if (value > node->data)
+    {
+        node->right = insert(node->right, value);
+    }
+
+    return node;
+}
+
 int main()
 {
     int option;
@@ -26,7 +45,7 @@ int main()
 
     do
     {
-        printf("\n1 - Adicionar raiz\n(-1) - sair\n");
+        printf("\n1 - Adicionar valor\n(-1) - sair\n");
         printf("\nDigite a opção: ");
         scanf("%d", &option);
 
@@ -36,7 +55,7 @@ int main()
             printf("\nDigite o valor a ser adicionado: ");
             scanf("%d", &value);
 
-            root = create(value);
+            root = insert(root, value);
             break;
 
         case -1:
