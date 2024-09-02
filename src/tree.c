@@ -75,6 +75,12 @@ void preOrder(Node *node)
 
 void postOrder(Node *node)
 {
+    if (node == NULL)
+    {
+        printf("\nNão há valores\n");
+        return;
+    }
+    
     if (node->left != NULL)
     {
         postOrder(node->left);
