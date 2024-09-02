@@ -3,7 +3,7 @@
 
 #include "tree.h"
 
-Node *create(int value)
+Node *createNode(int value)
 {
     struct Tree *newNode = (struct Tree *)malloc(sizeof(struct Tree));
     newNode->data = value;
@@ -12,26 +12,26 @@ Node *create(int value)
     return newNode;
 }
 
-Node *insert(Node *node, int value)
+Node *insertNode(Node *node, int value)
 {
     if (node == NULL)
     {
-        return create(value);
+        return createNode(value);
     }
 
     if (value < node->data)
     {
-        node->left = insert(node->left, value);
+        node->left = insertNode(node->left, value);
     }
     else if (value > node->data)
     {
-        node->right = insert(node->right, value);
+        node->right = insertNode(node->right, value);
     }
 
     return node;
 }
 
-void inOrder(Node *node)
+void inOrderTraversal(Node *node)
 {
     if (node == NULL)
     {
@@ -41,18 +41,18 @@ void inOrder(Node *node)
 
     if (node->left != NULL)
     {
-        inOrder(node->left);
+        inOrderTraversal(node->left);
     }
 
     printf("%d\n", node->data);
 
     if (node->right != NULL)
     {
-        inOrder(node->right);
+        inOrderTraversal(node->right);
     }
 }
 
-void preOrder(Node *node)
+void preOrderTraversal(Node *node)
 {
     if (node == NULL)
     {
@@ -64,31 +64,31 @@ void preOrder(Node *node)
 
     if (node->left != NULL)
     {
-        preOrder(node->left);
+        preOrderTraversal(node->left);
     }
 
     if (node->right != NULL)
     {
-        preOrder(node->right);
+        preOrderTraversal(node->right);
     }
 }
 
-void postOrder(Node *node)
+void postOrderTraversal(Node *node)
 {
     if (node == NULL)
     {
         printf("\nNão há valores\n");
         return;
     }
-    
+
     if (node->left != NULL)
     {
-        postOrder(node->left);
+        postOrderTraversal(node->left);
     }
 
     if (node->right != NULL)
     {
-        postOrder(node->right);
+        postOrderTraversal(node->right);
     }
 
     printf("%d\n", node->data);
