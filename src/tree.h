@@ -10,5 +10,8 @@ typedef struct Tree
 
 Node *create(int value);
 Node *insert(Node *node, int value);
+void inOrder(Node *node);
+void preOrder(Node *node);
+void postOrder(Node *node);
 
 #endif // TREE_H
