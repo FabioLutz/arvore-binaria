@@ -93,3 +93,72 @@ void postOrderTraversal(Node *node)
 
     printf("%d\n", node->data);
 }
+
+Node *inOrderSuccessor(Node *node)
+{
+    struct Tree *temp = node->right;
+
+    while (temp->left != NULL)
+    {
+        temp = temp->left;
+    }
+
+    node->right = removeNode(node->right, temp->data);
+    node->data = temp->data;
+    return node;
+}
+
+Node *removeNode(Node *node, int value)
+{
+    if (node == NULL)
+    {
+        printf("\nValor não encontrado\n");
+        return node;
+    }
+
+    if (value < node->data)
+    {
+        node->left = removeNode(node->left, value);
+        return node;
+    }
+
+    if (value > node->data)
+    {
+        node->right = removeNode(node->right, value);
+        return node;
+    }
+
+    // Não é nulo, nem maior, nem menor, então é o valor
+    if (node->left == NULL)
+    {
+        // Esquerda é nulo
+        if (node->right == NULL)
+        {
+            // Ambos são nulos
+            node = NULL;
+        }
+        // Direita tem valor
+        else
+        {
+            node->data = node->right->data;
+            node->right = NULL;
+        }
+    }
+    // Esquerda tem valor
+    else
+    {
+        if (node->right == NULL)
+        {
+            // Direita é nulo
+            node->data = node->left->data;
+            node->left = NULL;
+        }
+        else
+        {
+            // Ambos tem valor
+            node = inOrderSuccessor(node);
+        }
+    }
+
+    return node;
+}

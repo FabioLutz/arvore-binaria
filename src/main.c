@@ -11,7 +11,7 @@ int main()
 
     do
     {
-        printf("\n1 - Adicionar valor\n2 - Imprimir árvore\n-1 - Sair\n");
+        printf("\n1 - Adicionar valor\n2 - Imprimir árvore\n3 - Remover valor\n-1 - Sair\n");
         printf("\nDigite a opção: ");
         scanf("%d", &option);
 
@@ -47,6 +47,13 @@ int main()
                 printf("\nValor inválido\n");
                 break;
             }
+            break;
+
+        case 3:
+            printf("\nDigite o valor a ser removido: ");
+            scanf("%d", &value);
+
+            root = removeNode(root, value);
             break;
 
         case -1:
