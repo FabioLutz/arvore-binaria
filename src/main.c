@@ -11,7 +11,7 @@ int main()
 
     do
     {
-        printf("\n1 - Adicionar valor\n2 - Imprimir árvore\n(-1) - sair\n");
+        printf("\n1 - Adicionar valor\n2 - Imprimir árvore\n-1 - Sair\n");
         printf("\nDigite a opção: ");
         scanf("%d", &option);
 
@@ -21,7 +21,7 @@ int main()
             printf("\nDigite o valor a ser adicionado: ");
             scanf("%d", &value);
 
-            root = insert(root, value);
+            root = insertNode(root, value);
             break;
             
         case 2:
@@ -32,15 +32,15 @@ int main()
             switch (option)
             {
             case 1:
-                inOrder(root);
+                inOrderTraversal(root);
                 break;
 
             case 2:
-                preOrder(root);
+                preOrderTraversal(root);
                 break;
 
             case 3:
-                postOrder(root);
+                postOrderTraversal(root);
                 break;
 
             default:
