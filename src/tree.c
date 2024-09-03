@@ -5,7 +5,7 @@
 
 void createNode(Node **node, int value)
 {
-    *node = (struct Tree *) malloc (sizeof (struct Tree));
+    *node = (struct Tree *)malloc(sizeof(struct Tree));
     (*node)->data = value;
     (*node)->left = NULL;
     (*node)->right = NULL;
@@ -33,62 +33,35 @@ void inOrderTraversal(Node **node)
 {
     if (*node == NULL)
     {
-        printf("\nNão há valores\n");
         return;
     }
 
-    if ((*node)->left != NULL)
-    {
-        inOrderTraversal(&((*node)->left));
-    }
-
+    inOrderTraversal(&((*node)->left));
     printf("%d\n", (*node)->data);
-
-    if ((*node)->right != NULL)
-    {
-        inOrderTraversal(&((*node)->right));
-    }
+    inOrderTraversal(&((*node)->right));
 }
 
 void preOrderTraversal(Node **node)
 {
     if (*node == NULL)
     {
-        printf("\nNão há valores\n");
         return;
     }
 
     printf("%d\n", (*node)->data);
-
-    if ((*node)->left != NULL)
-    {
-        preOrderTraversal(&((*node)->left));
-    }
-
-    if ((*node)->right != NULL)
-    {
-        preOrderTraversal(&((*node)->right));
-    }
+    preOrderTraversal(&((*node)->left));
+    preOrderTraversal(&((*node)->right));
 }
 
 void postOrderTraversal(Node **node)
 {
     if (*node == NULL)
     {
-        printf("\nNão há valores\n");
         return;
     }
 
-    if ((*node)->left != NULL)
-    {
-        postOrderTraversal(&((*node)->left));
-    }
-
-    if ((*node)->right != NULL)
-    {
-        postOrderTraversal(&((*node)->right));
-    }
-
+    postOrderTraversal(&((*node)->left));
+    postOrderTraversal(&((*node)->right));
     printf("%d\n", (*node)->data);
 }
 
