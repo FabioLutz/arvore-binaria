@@ -11,7 +11,7 @@ int main()
 
     do
     {
-        printf("\n1 - Adicionar valor\n2 - Imprimir árvore\n3 - Remover valor\n-1 - Sair\n");
+        printf("\n1 - Adicionar valor\n2 - Imprimir árvore\n3 - Remover valor\n0 - Sair\n");
         printf("\nDigite a opção: ");
         scanf("%d", &option);
 
@@ -23,7 +23,7 @@ int main()
 
             root = insertNode(root, value);
             break;
-            
+
         case 2:
             printf("\n1 - In order\n2 - Pre-Order\n3 - Post-Order\n");
             printf("\nDigite a opção: ");
@@ -56,17 +56,16 @@ int main()
             root = removeNode(root, value);
             break;
 
-        case -1:
-            printf("\nEncerrando...\n\n");
-            return 0;
-
         default:
-            printf("\nValor inválido\n");
+            if (option != 0)
+            {
+                printf("\nValor inválido\n");
+            }
             break;
         }
 
-    } while (option >= 0);
+    } while (option != 0);
 
-    printf("\n\n\tErro!\n\n");
+    printf("\nEncerrando...\n\n");
     return 0;
 }
