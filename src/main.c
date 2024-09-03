@@ -21,7 +21,7 @@ int main()
             printf("\nDigite o valor a ser adicionado: ");
             scanf("%d", &value);
 
-            root = insertNode(root, value);
+            insertNode(&root, value);
             break;
 
         case 2:
@@ -32,15 +32,15 @@ int main()
             switch (option)
             {
             case 1:
-                inOrderTraversal(root);
+                inOrderTraversal(&root);
                 break;
 
             case 2:
-                preOrderTraversal(root);
+                preOrderTraversal(&root);
                 break;
 
             case 3:
-                postOrderTraversal(root);
+                postOrderTraversal(&root);
                 break;
 
             default:
@@ -53,7 +53,7 @@ int main()
             printf("\nDigite o valor a ser removido: ");
             scanf("%d", &value);
 
-            root = removeNode(root, value);
+            removeNode(&root, value);
             break;
 
         default:
