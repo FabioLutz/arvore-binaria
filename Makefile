@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -Iinclude
 SRC_DIR = src
+HEADER_DIR = include
 OBJ_DIR = build
 TARGET_DIR = bin
 SRC = $(notdir $(wildcard $(SRC_DIR)/*.c))
@@ -19,8 +20,10 @@ $(TARGET): $(OBJ)
 	$(CC) -g -o $(TARGET_DIR)/$@ $(addprefix $(OBJ_DIR)/, $^)
 
 dir:
-	mkdir $(OBJ_DIR)
-	mkdir $(TARGET_DIR)
+	mkdir -p $(SRC_DIR)
+	mkdir -p $(HEADER_DIR)
+	mkdir -p $(OBJ_DIR)
+	mkdir -p $(TARGET_DIR)
 
 clean:
 	rm $(TARGET_DIR)/* $(OBJ_DIR)/*
